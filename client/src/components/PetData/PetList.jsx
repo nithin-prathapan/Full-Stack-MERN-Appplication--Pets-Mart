@@ -2,7 +2,19 @@ import React, { useEffect, useState } from 'react'
 import PetCard from './PetCard'
 import axios from 'axios'
 import { useSelector } from 'react-redux'
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import './petcard.css'
 const PetList = () => {
+  //slider settings
+  var settings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 4,
+    slidesToScroll: 1,
+  }
   const { isCategory, isPrice } = useSelector(state => state.product)
   console.log(isPrice, isCategory);
   const [data, setData] = useState([])
@@ -36,15 +48,19 @@ const PetList = () => {
           </div>
 
         ) : (
-          <div className='grid grid-cols-4 gap-y-4 gap-x-2 md:grid-cols-2 sm:grid-cols-1  '>
-            {
-              data.map((pet) => (
-                <PetCard key={pet._id} pet={pet} />
-              ))
-            }
+          <div className='my-auto  w-full'>
+            <Slider {...settings}>
+              {
+                data.map((pet) => (
+                  <PetCard key={pet._id} pet={pet} />
+                ))
+              }
+            </Slider>
           </div>
         )
       }
+
+
     </div>
 
   )

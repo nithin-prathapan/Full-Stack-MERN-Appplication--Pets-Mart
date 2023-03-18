@@ -33,7 +33,7 @@ const ShowOrders = () => {
                                     const createdAt = new Date(order.createdAt);
                                     return (
                                         <div key={item._id} className="w-full  mx-auto">
-                                            <p className='my-2  '>{item.name} <span className='mx-2'>x</span> <span className='mx-2'>{item.quantity}</span> = <span>{item.totalPrice}</span> </p>
+                                            <p className='my-2  '>{item.name} <span className='mx-1'>x</span> <span className='mx-1'>{item.quantity}</span> = <span className='text-button-primary'>{item.totalPrice}</span> </p>
                                             <p className='w-[80%] my-2'>{item.color}</p>
                                             <p><span className='mr-1 text-button-primary'>Ordered At :</span> {createdAt.toLocaleDateString()}</p>
                                         </div>
@@ -60,7 +60,7 @@ const ShowOrders = () => {
                                 }
                             </div>
 
-                            <button onClick={e => deleteOrder(order._id)} className='my-auto mt-2'>Remove</button>
+                            <button onClick={e => deleteOrder(order._id)} className='my-auto mt-2 hover:text-[#f00]'>Remove</button>
 
 
                         </div>
