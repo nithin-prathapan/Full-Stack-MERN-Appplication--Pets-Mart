@@ -59,7 +59,7 @@ const AllPets = () => {
                                     <img className='w-[50%] rounded-3xl shadow-md mx-auto' src={`http://localhost:4000/images/${pet.image}`} alt="" />
                                 </div>
                                 <div className='mx-auto'>{pet.price}</div>
-                                <div className='mx-auto col-span-3'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda, sequi!</div>
+                                <div className='mx-auto col-span-3 overflow-y-auto h-[100px]'>{pet.description}</div>
                                 <div className='mx-auto w-full'>
                                     <button onClick={() => { handleEdit(pet._id) }} className='bg-[#000] p-1 w-[90%] mx-auto font-semibold rounded-md text-sm text-[#fff]'>Edit</button>
                                 </div>

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import StripeCheckout from 'react-stripe-checkout'
 import { useDispatch, useSelector } from 'react-redux'
 import { createPayment } from '../../redux/paymentReducer'
@@ -17,6 +17,15 @@ const CheckOut = ({ subtotal }) => {
         dispatch(createPayment({ subtotal, token, user, items }))
 
     }
+    useEffect(() => {
+        if (isPaid) {
+            setTimeout(() => {
+
+                navigate('/')
+            },[1000])
+
+        }
+    }, [isPaid])
     return (
         <div>
             {
@@ -27,6 +36,7 @@ const CheckOut = ({ subtotal }) => {
             }
             {
                 isPaid && (<SuccessOrder />)
+
             }
             <StripeCheckout
                 amount={subtotal * 100}
