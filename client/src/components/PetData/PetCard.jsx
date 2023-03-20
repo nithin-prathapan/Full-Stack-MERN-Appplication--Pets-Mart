@@ -28,20 +28,20 @@ const PetCard = ({ pet }) => {
             })
     }
     return (
-        <div className=' shadow-md max-h-[300px] my-2 rounded-lg duration-300 p-2 mr-2 ml-2  mx-auto'>
-            <div className="image-container w-full px-4  image  flex justify-center">
+        <div className=' shadow-md sm:w-[100px] max-w-[200px] max-h-[270px] sm:max-h-[140px] my-2  mx-auto  rounded-lg duration-300 py-2 p-1 mr-2 ml-2'>
+            <div className="w-full flex mx-auto justify-center">
                 <img
                     onClick={e => showPetDetail(data._id)}
-                    className='rounded-lg shadow-lg drop-shadow-md w-[180px] -translate-y-4 h-[200px] object-cover
-                    hover:-translate-y-2 duration-300 ease-in-out'
+                    className='rounded-lg shadow-lg drop-shadow-md sm:w-[80px] w-[160px]  -translate-y-4 sm:max-h-[100px] h-[200px] object-cover
+                    hover:-translate-y-2 duration-300 ease-in-out relative'
                     src={`http://localhost:4000/images/${data.image}`} alt={data.name} />
             </div>
             <div className='w-full'>
-                <h1 className='text-center  uppercase font-semibold text-md'>{data.name}</h1>
+                <h1 className='text-center max-h-[20px] uppercase font-semibold sm:text-[8px] text-[10px]  mb-1'>{data.name}</h1>
             </div>
-            <div className=" cart-section mt-2   w-[90%] mx-auto mb-4 rounded-md p-1 flex justify-between">
-                <AddShoppingCartIcon className='cursor-pointer' onClick={handleAddToCart} />
-                <span><CurrencyRupeeRoundedIcon className='' size={20} />{data.price}</span>
+            <div className="sm:hidden  hover:text-[#fff] duration-300 ease-in-out px-2 cart-section text-[12px] w-[90%] mx-auto   rounded-md p-1 flex justify-between">
+                <AddShoppingCartIcon style={{ fontSize: 15 }} className='cursor-pointer' onClick={handleAddToCart} />
+                <span className='my-auto'><CurrencyRupeeRoundedIcon className='-translate-y-[2px]' style={{ fontSize: 15 }} />{data.price}</span>
             </div>
         </div >
     )

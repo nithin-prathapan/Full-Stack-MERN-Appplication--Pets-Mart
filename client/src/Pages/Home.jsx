@@ -55,7 +55,7 @@ const Home = () => {
         </div>
         {/* DROP DOWN AND PET LISTS */}
         <div className="mt-4">
-          <h1 className="bg-button-primary w-[100px] text-center py-2 rounded-3xl font-fancy text-2xl">Explore</h1>
+          <h1 className=" w-[100px] text-center text-button-primary font-bold  rounded-3xl font-fancy text-3xl">Explore</h1>
 
           <div className="w-full">
             <DropDown />

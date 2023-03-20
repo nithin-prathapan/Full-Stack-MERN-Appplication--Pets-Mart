@@ -38,6 +38,7 @@ const fileFilter = (req, file, cb) => {
     "image/jpg",
     "image/png",
     "image/avif",
+    "image/webp",
   ];
   if (allowedFileTypes.includes(file.mimetype)) {
     cb(null, true);

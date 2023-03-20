@@ -32,7 +32,10 @@ const petsSchema = new mongoose.Schema({
   purpose: String,
   image: String,
   color: String,
-  category: String,
+  category: {
+    type: String,
+    default: "Others",
+  },
   review: [reviewSchema],
 });
 

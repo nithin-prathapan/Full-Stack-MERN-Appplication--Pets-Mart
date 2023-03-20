@@ -1,20 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import PetCard from './PetCard'
+import Slider from 'react-slick'
 import axios from 'axios'
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
 import { useSelector } from 'react-redux'
-import Slider from "react-slick";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
-import './petcard.css'
 const PetList = () => {
-  //slider settings
-  var settings = {
-    dots: true,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 4,
-    slidesToScroll: 1,
-  }
   const { isCategory, isPrice } = useSelector(state => state.product)
   console.log(isPrice, isCategory);
   const [data, setData] = useState([])
@@ -36,8 +27,67 @@ const PetList = () => {
         });
     }
   }, [isCategory, isPrice])
+  const dogs = data.filter((item) => item.category === "Dog")
+  const cats = data.filter((item) => item.category === "Cat")
+  const others = data.filter((item) => item.category !== "Dog" && item.category !== "Cat")
+  console.log("dog", dogs);
+  //slider settings
+  const settings = {
+    dots: false,
+    infinite: true,
+    speed: 300,
+    slidesToShow: 6,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 3000,
+    pauseOnHover: true,
+    responsive: [
+      {
+        breakpoint: 1124,
+        settings: {
+          slidesToShow: 5,
+          slidesToScroll: 1,
+          infinite: true,
+          dots: true
+        }
+      },
+      {
+        breakpoint: 900,
+        settings: {
+          slidesToShow: 4,
+          slidesToScroll: 1,
+          infinite: true,
+          dots: true
+        }
+      },
+      {
+        breakpoint: 650,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 1,
+          initialSlide: 2
+        }
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 1
+        }
+      },
+      {
+        breakpoint: 400,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 1,
+          dots: false
+        }
+      }
+    ]
+
+  }
   return (
-    <div>
+    <div className='w-full'>
       {
         data.length === 0 ? (
           <div>
@@ -48,19 +98,62 @@ const PetList = () => {
           </div>
 
         ) : (
-          <div className='my-auto  w-full'>
-            <Slider {...settings}>
+          <div className=' '>
+            <div className='my-6 mb-12 mt-4 w-full mx-auto'>
               {
-                data.map((pet) => (
-                  <PetCard key={pet._id} pet={pet} />
-                ))
+                dogs.length === 0 ? (<></>) : (
+                  <div>
+                    <h1 className='rounded-2xl mx-auto font-fancy text-[25px] px-2 py-1  my-4 ' >Dogs</h1>
+
+                    <Slider slidesToShow={2}  {...settings}>
+                      {
+                        dogs.map((pet) => (
+                          <PetCard key={pet._id} pet={pet} />
+                        ))
+                      }
+                    </Slider>
+                  </div>
+                )
               }
-            </Slider>
+            </div>
+            <div className='my-6 mb-12 mt-4 w-full mx-auto'>
+              {
+                cats.length === 0 ? (<></>) : (
+
+                  <div>
+                    <h1 className='rounded-2xl mx-auto font-fancy text-[25px] px-2 py-1  my-4 ' >Cats</h1>
+                    <Slider slidesToShow={2}  {...settings}>
+                      {
+                        cats.map((pet) => (
+                          <PetCard key={pet._id} pet={pet} />
+                        ))
+                      }
+                    </Slider>
+                  </div>
+                )
+              }
+            </div>
+            <div className='my-6 mb-12 mt-4 w-full mx-auto'>
+              {
+                others.length === 0 ? (<></>) : (
+                  <div className='w-full'>
+                    <h1 className='rounded-2xl  mx-auto font-fancy text-[25px] px-2 py-1 w-full my-4' >You may like</h1>
+
+                    <div className='grid grid-cols-5 sm:grid-cols-3 md:grid-cols-3'>
+                      {
+                        others.map((pet) => (
+                          <PetCard key={pet._id} pet={pet} />
+                        ))
+                      }
+
+                    </div>
+                  </div>
+                )
+              }
+            </div>
           </div>
         )
       }
-
-
     </div>
 
   )

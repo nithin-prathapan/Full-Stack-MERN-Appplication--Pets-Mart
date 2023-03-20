@@ -1,25 +1,37 @@
-.prev-arrow {
-  position: absolute;
-  top: 50%;
-  left: -30px;
-  width: 0;
-  height: 0;
-  border-top: 10px solid transparent;
-  border-bottom: 10px solid transparent;
-  border-right: 20px solid #fff;
-  transform: translateY(-50%);
-  cursor: pointer;
+.card-description {
+  display: -webkit-box;
+  /* Set the display property for webkit browsers */
+  -webkit-line-clamp: 3;
+  /* Set the number of lines to truncate after */
+  -webkit-box-orient: vertical;
+  /* Set the text to flow vertically */
+  overflow: hidden;
+  /* Hide any text that exceeds the container */
+  height: 2.5em;
+  /* Set the height to three lines of text */
+  line-height: 1em;
+  /* Set the line height to match the font size */
+  overflow: hidden;
+  /* Hide any text that exceeds the height of the container */
 }
 
-.next-arrow {
+.parent {
+  position: relative;
+  /* Set the position property to relative */
+}
+
+.hidden-child {
+  display: none;
+  /* Hide the div by default */
   position: absolute;
-  top: 50%;
-  right: -30px;
-  width: 0;
-  height: 0;
-  border-top: 10px solid transparent;
-  border-bottom: 10px solid transparent;
-  border-left: 20px solid #fff;
-  transform: translateY(-50%);
-  cursor: pointer;
+  /* Set the position property to absolute */
+  top: 100%;
+  /* Position the div below the parent element */
+  left: 0;
+  /* Align the div to the left of the parent element */
+}
+
+.visible-child:hover+.hidden-child {
+  display: block;
+  /* Show the hidden div when the visible div is hovered over */
 }

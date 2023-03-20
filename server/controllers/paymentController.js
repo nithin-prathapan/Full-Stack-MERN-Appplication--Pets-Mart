@@ -2,9 +2,12 @@ import { v4 as uuidv4 } from "uuid";
 import Stripe from "stripe";
 import Order from "../models/orderSchema.js";
 
-const stripe = new Stripe(process.env.STRIPE_KEY, {
-  apiVersion: "2022-11-15",
-});
+const stripe = new Stripe(
+  "sk_test_51Mh4jiSEx7nkkDnClQgS4gcoiCDTpU5bhTnRPQqkxAHG5arzno02edRfGBkCJjNmwleEI7aUHeYN8Rf4F5S6gR8600GqlfIpDw",
+  {
+    apiVersion: "2022-11-15",
+  }
+);
 export const processPayment = async (req, res) => {
   const { subtotal, token, user, items } = req.body;
   const currentUser = user;

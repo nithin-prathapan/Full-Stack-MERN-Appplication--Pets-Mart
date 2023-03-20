@@ -52,7 +52,6 @@ const AddPet = () => {
             await axios.post('http://localhost:4000/pet', formData).then((response) => {
                 console.log(response.data);
             })
-            formRef.current.reset();
         }
     }
     return (
@@ -84,6 +83,9 @@ const AddPet = () => {
                     className='block m-4 p-4 drop-shadow-md rounded-lg ' name="" id=""
                     onChange={(e) => setCategory(e.target.value)} value={category}
                 >
+                    <option value="Others">
+                        Select Category
+                    </option>
                     <option value="Dog">
                         Dog
                     </option>
