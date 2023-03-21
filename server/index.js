@@ -53,10 +53,13 @@ app.use("/order", orderRoutes);
 app.use("/payment", paymentRoutes);
 mongoose.set("strictQuery", false);
 mongoose
-  .connect(process.env.MONGO_URI, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  })
+  .connect(
+    "mongodb+srv://nithin:nithin@cluster0.itl5igy.mongodb.net/pets-mart?retryWrites=true&w=majority",
+    {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    }
+  )
   .then(console.log("Database connected"));
 app.listen(4000, () => {
   console.log("started on", 4000);
