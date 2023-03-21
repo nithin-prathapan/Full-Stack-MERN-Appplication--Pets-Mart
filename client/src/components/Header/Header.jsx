@@ -22,7 +22,7 @@ const Header = () => {
     const user = localStorage.getItem('user')
     if (user)
       setAdmin(JSON.parse(user).admin)
-  });
+  }, [admin]);
   const [isMenu, setIsMenu] = useState(false);
   const menuStatus = () => {
     setIsMenu(!isMenu)

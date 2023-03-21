@@ -20,12 +20,11 @@ const CheckOut = ({ subtotal }) => {
     useEffect(() => {
         if (isPaid) {
             setTimeout(() => {
-
                 navigate('/')
-            },[1000])
+            }, [1000])
 
         }
-    }, [isPaid])
+    })
     return (
         <div>
             {

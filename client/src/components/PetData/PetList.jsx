@@ -9,13 +9,13 @@ const PetList = () => {
   const { isCategory, isPrice } = useSelector(state => state.product)
   console.log(isPrice, isCategory);
   const [data, setData] = useState([])
-  console.log(data);
   useEffect(() => {
     if (isCategory || isPrice) {
       axios.post('http://localhost:4000/pet/rec', { isPrice, isCategory })
         .then((response) => {
           console.log(response);
           setData(response.data)
+
         })
     }
     else {

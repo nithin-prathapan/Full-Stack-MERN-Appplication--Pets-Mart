@@ -13,7 +13,6 @@ import pet13 from '../../assets/images/pet13.avif'
 import pet14 from '../../assets/images/pet14.avif'
 import pet16 from '../../assets/images/pet16.avif'
 import pet15 from '../../assets/images/pet15.avif'
-import pet17 from '../../assets/images/pet17.avif'
 
 const CustomGallary = () => {
     return (

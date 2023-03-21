@@ -1,12 +1,10 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { AiOutlineMinusCircle, AiOutlinePlusCircle } from 'react-icons/ai'
 import { decrement, increment, removeItem } from '../redux/cartReducer'
 import { Link, useNavigate } from 'react-router-dom'
-import axios from 'axios'
 import CheckOut from '../components/Checkout/CheckOut'
 const CartPage = () => {
-    const [currency, setCurrency] = useState('usd')
     const navigate = useNavigate()
     const dispatch = useDispatch()
     const { items, totalPrice, totalQuantity } = useSelector(state => state.cart)
@@ -17,9 +15,7 @@ const CartPage = () => {
     const handleDecrement = (id) => {
         dispatch(decrement(id))
     }
-    const handleCheckout = async () => {
 
-    }
     const handleRemove = (id) => {
 
         if (window.confirm("Are you sure want to remove from cart?")) {
@@ -29,19 +25,6 @@ const CartPage = () => {
         }
 
     }
-    const handlePayment = async (e) => {
-        e.preventDefault()
-        try {
-            await axios.post('http://localhost:4000/payment/create', {
-                amount: totalPrice,
-                currency,
-            })
-        } catch (error) {
-
-        }
-
-    }
-    const numbers = Array.from(Array(10).keys());
     return (
         <div className='flex md:block sm:block'>
             {

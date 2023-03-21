@@ -2,8 +2,7 @@ import React, { useEffect, useState } from 'react'
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import CurrencyRupeeRoundedIcon from '@mui/icons-material/CurrencyRupeeRounded';
 import './petcard.css'
-import { BsBagPlusFill } from 'react-icons/bs'
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { addToCart } from '../../redux/cartReducer'
 import { displayPetDetail } from '../../redux/productReducer'
 import { useNavigate } from 'react-router-dom'

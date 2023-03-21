@@ -1,4 +1,5 @@
 import Pets from "../models/petsSchema.js";
+import mongoose from "mongoose";
 export const createPet = async (req, res) => {
   console.log(req.file.filename);
   console.log(req.body.name);
@@ -90,12 +91,14 @@ export const updatePet = async (req, res) => {
     category,
     temperment,
   };
-  const id = req.params.id;
+
   if (req.file) {
     post.image = req.file.filename;
   }
   try {
-    const updatedPost = await Pets.findByIdAndUpdate(id, post, { new: true });
+    const updatedPost = await Pets.findByIdAndUpdate(req.params.id, post, {
+      new: true,
+    });
     if (!updatedPost) {
       res.status(404).json({ success: false, message: "PRODUCT NOT FOUND" });
     } else {
@@ -113,7 +116,7 @@ export const updatePet = async (req, res) => {
 //GET SINGLE PET
 
 export const getSinglePet = async (req, res) => {
-  const id = req.params.id;
+  const id = mongoose.Types.ObjectId(req.params.id);
   try {
     const Pet = await Pets.findById(id);
     if (!Pet) {

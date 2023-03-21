@@ -1,6 +1,7 @@
 import mongoose from "mongoose";
 
 const reviewSchema = new mongoose.Schema({
+  _id: mongoose.Schema.Types.ObjectId,
   rating: {
     type: Number,
     required: true,

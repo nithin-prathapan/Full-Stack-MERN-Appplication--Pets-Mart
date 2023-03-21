@@ -1,9 +1,9 @@
 import axios from 'axios';
-import React, { useRef, useState } from 'react'
-
+import React, {useState } from 'react'
+import { useNavigate } from 'react-router-dom';
 
 const AddPet = () => {
-    const formRef = useRef(null);
+    const navigate = useNavigate()
     const [category, setCategory] = useState('')
     console.log(category);
 
@@ -51,6 +51,7 @@ const AddPet = () => {
             formData.append('image', image)
             await axios.post('http://localhost:4000/pet', formData).then((response) => {
                 console.log(response.data);
+                navigate('/admin')
             })
         }
     }
